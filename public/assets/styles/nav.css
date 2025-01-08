@@ -1,0 +1,192 @@
+ .header {
+   background-color: #fc3468;
+   height: 45px;
+ }
+
+ .envelope {
+   margin-left: 10px;
+ }
+
+ .navbar ul li {
+   padding: 0 15px;
+ }
+
+ .navbar ul li a {
+   color: #fc3468;
+ }
+
+ .links {
+   text-decoration: none;
+   color: #fc3468;
+ }
+
+ .nav-margin {
+   margin-top: -10px;
+ }
+
+ .techpr {
+   color: #fc3468;
+ }
+
+ .intro-text {
+   font-size: 40px;
+   margin-top: 23px;
+ }
+
+ @media screen and (max-width: 993px) {
+   .intro-text {
+     font-size: 35px;
+   }
+ }
+
+ @media screen and (max-width: 990px) {
+   .nav-margin {
+     margin-top: -4px;
+   }
+ }
+
+
+ .submit-btn {
+   color: #fc3468;
+   text-decoration-line: none;
+   background-color: #fff;
+   padding: 15px 30px;
+   border-radius: 25px;
+   border: 2px solid #fc3468;
+   /* Add border to match text color */
+   transition: all 0.3s ease-in-out;
+   /* Smooth transition for all changes */
+ }
+
+ .submit-btn:hover {
+   background-color: #fc3468;
+   /* Change background color */
+   color: #fff;
+   /* Change text color */
+   transform: scale(1.05);
+   /* Slight scaling effect */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   /* Add subtle shadow for depth */
+ }
+
+
+
+
+
+ footer.bg-dark {
+   background-color: #343a40;
+   /* Dark background */
+   color: #fff;
+   /* White text */
+   padding: 40px 0;
+   /* Padding for space around content */
+ }
+
+ footer .container {
+   max-width: 1200px;
+   /* Limit the width of the footer content */
+ }
+
+ footer ul {
+   list-style-type: none;
+   /* Remove bullet points */
+   padding: 0;
+ }
+
+ footer ul li {
+   margin-bottom: 10px;
+   /* Space between items */
+ }
+
+ footer ul li a {
+   color: #fff;
+   /* White text for links */
+   text-decoration: none;
+   /* Remove underline */
+   font-size: 1rem;
+   /* Adjust font size */
+   transition: color 0.3s ease;
+   /* Smooth transition for color change */
+ }
+
+ footer ul li a:hover {
+   color: #fc3468;
+   /* Change link color on hover */
+ }
+
+ footer .techpr {
+   font-weight: bold;
+   /* Make TechPr bold */
+   color: #fc3468;
+   /* Set a distinct color for TechPr */
+ }
+
+ footer .bi {
+   font-size: 1.5rem;
+   /* Increase the size of icons */
+   margin-left: 10px;
+   /* Space between text and icon */
+ }
+
+ footer .bi:hover {
+   color: #fc3468;
+   /* Change icon color on hover */
+ }
+
+ footer .col {
+   padding: 0 20px;
+   /* Add spacing between columns */
+ }
+
+ footer .row {
+   display: flex;
+   flex-wrap: wrap;
+   /* Allow columns to wrap on smaller screens */
+   justify-content: space-between;
+ }
+
+ footer .col ul {
+   text-align: left;
+   /* Align text to the left */
+ }
+
+ /* Mobile responsiveness */
+ @media (max-width: 768px) {
+   footer .row {
+     text-align: center;
+   }
+
+   footer .col {
+     padding-bottom: 20px;
+   }
+ }
+
+ /* .gear-icon {
+  margin-left: 5px;
+} */
+ @media screen and (max-width:505px) {
+   .gear-icon {
+     font-size: small;
+   }
+ }
+
+ .reg-wrapper {
+  background-color: #fc3468;
+}
+
+.register-btn {
+  background-color: #fc3468;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #d92e5c; /* Slightly darker shade */
+  color: #fff;
+  box-shadow: 0 8px 15px rgba(252, 52, 104, 0.3); /* Add a glow effect */
+  transform: scale(1.05); /* Slightly enlarge the button */
+}

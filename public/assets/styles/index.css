@@ -1,0 +1,502 @@
+
+.webinar-btn {
+  text-decoration: none;
+  color: white;
+  background-color: #fc3468;
+  padding: 7px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.webinar-btn:hover {
+  background-color: #ffebf2;
+  color: #fc3468;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.webinar-register-wrapper {
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .webinar-register-wrapper {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+.hero-img {
+  width: 45%;
+}
+
+.personality-text {
+  color: #fc3468;
+  /* font-size: 20px; */
+}
+
+.test-btn-wrapper {
+  margin-top: 25px; 
+}
+
+.test-btn {
+  text-decoration: none;
+  color: #fc3468;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid #fc3468;
+  transition: all 0.3s ease-in-out;
+}
+
+.test-btn:hover {
+  background-color: #fc3468;
+  color: white;
+  font-weight: 600;
+}
+
+.background-img-wrapper {
+  background-image: url("../images/Rectangle\ 12.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 145px;
+  width: 17.9rem;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.background-img2-wrapper {
+  background-image: url("../images/Rectangle 12 (1).png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 145px;
+  width: 17.9rem;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.background-img3-wrapper {
+  background-image: url("../images/Rectangle 12 (2).png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 145px;
+  width: 17.9rem;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+.background-img-wrapper p {
+  line-height: 0.5;
+  font-size: small;
+}
+.background-img2-wrapper p {
+  line-height: 0.5;
+  font-size: small;
+}
+.background-img3-wrapper p {
+  line-height: 0.5;
+  font-size: small;
+}
+.card-wrapper {
+  border-radius: 12px;
+}
+
+.card-body ul {
+  list-style: none;
+  padding: 0 3px;
+  font-size: small;
+}
+
+.card-body li {
+  margin-bottom: 10px;
+}
+
+.checkmark {
+  color: #fc3468;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.enrol-btn {
+  text-decoration: none;
+  color: #fc3468;
+  border-radius: 8px;
+  border: 1px solid #fc3468;
+  transition: all 0.3s ease-in-out;
+  padding-top: 4px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+}
+
+.enrol-btn:hover {
+  background-color: #fc3468;
+  color: white;
+  font-weight: 600;
+}
+.enrol-btn-wrapper {
+  padding-top: 20px;
+}
+
+.talent-text {
+  color: #fc3468;
+}
+
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /* margin: auto; */
+}
+
+.slides {
+  display: flex;
+  animation: slide-left 20s linear infinite;
+}
+
+.slides img {
+  flex: 0 0 auto;
+  width: 10%;
+  height: 40px;
+  margin-right: 2rem;
+  object-fit: contain;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.project-card {
+  border-radius: 25px;
+  border: 1px solid #fc3468;
+}
+
+.project-card {
+  background-color: #fff; /* Default card background */
+  border-radius: 25px;
+  border: 1px solid #fc3468;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: all 0.3s ease-in-out; /* Smooth animation for hover effects */
+}
+
+.project-card:hover {
+  cursor: pointer;
+  border: #fff;
+  background-color: #fc3468; /* Hover background color */
+  transform: translateY(-10px); /* Lift card slightly */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  color: #fff; /* Change text color to white for better contrast */
+}
+
+.project-card:hover .card-title,
+.project-card:hover .card-text {
+  color: #fff; /* Text color changes to white on hover */
+}
+
+.number-wrapper {
+  background-color: #fc3468;
+  color: white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle default shadow */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.number-wrapper:hover {
+  background-color: #ff5f8a; /* Lighter shade of pink on hover */
+  transform: scale(1.1); /* Slightly increase size */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  cursor: pointer; /* Pointer cursor for better UX */
+}
+
+@media screen and (max-width: 807px) {
+  .learn-text {
+    font-size: 1rem;
+  }
+}
+
+.background-wrapper {
+  background-image: url(../images/Rectangle\ 15\ \(1\).png); 
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 620px;
+}
+
+.background-content ul li {
+  padding: 25px 0;
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.background-content ul li:hover {
+  background-color: #fc3468; /* Add a vibrant background on hover */
+  transform: scale(1.05); /* Slightly enlarge the list item */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.background-content {
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 1496px) {
+  .background-content ul li {
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 1237px) {
+  .background-content ul li {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 1128px) {
+  .background-content ul li {
+    padding: 5px 0;
+  }
+}
+
+@media screen and (max-width: 1083px) {
+  .background-content ul li {
+    padding: 2px 0;
+  }
+  .background-content {
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 957px) {
+  .background-content ul li {
+    padding: 2px 0;
+  }
+  .background-content {
+    padding-top: 25px;
+  }
+  .background-wrapper {
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .background-content ul li {
+    padding: 2px 0;
+    font-size: 1em;
+  }
+}
+
+.slide-container {
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+}
+.slide-content {
+  margin: 0 40px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.card {
+  border-radius: 25px;
+  background-color: #fff;
+}
+.image-content,
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+.image-content {
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fc3468;
+  border-radius: 25px 25px 0 25px;
+}
+.overlay::before,
+.overlay::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #fc3468;
+}
+.overlay::after {
+  border-radius: 0 25px 0 0;
+  background-color: #fff;
+}
+.card-image {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 3px;
+}
+.card-image .card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fc3468;
+}
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description {
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+.button {
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px 16px;
+  background-color: #fc3468;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background: #fc3468;
+}
+.swiper-navBtn {
+  color: #fc3468;
+  transition: color 0.3s ease;
+}
+.swiper-navBtn:hover {
+  color: #fc3468;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after {
+  font-size: 35px;
+}
+.swiper-button-next {
+  right: 0;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-pagination-bullet {
+  background-color: #fc3468;
+  opacity: 1;
+}
+.card-text-margin {
+  margin-top: -8px;
+}
+.swiper-pagination-bullet-active {
+  background-color: #fc3468;
+}
+@media screen and (max-width: 768px) {
+  .slide-content {
+    margin: 0 10px;
+  }
+  .swiper-navBtn {
+    display: none;
+  }
+}
+
+.card:hover {
+  transition: transform 0.3s ease;
+}
+
+/* Image Hover Effect */
+.card-image:hover .card-img {
+  transition: transform 0.3s ease;
+}
+
+/* Overlay Hover Effect */
+.card:hover .overlay {
+  opacity: 0.8; /* Fade the overlay a bit on hover for more visibility */
+  transition: opacity 0.3s ease;
+}
+
+@media screen and (max-width:1416px) {
+  .candidates-wrapper {
+    margin-top: -90px;
+  }
+}
+@media screen and (max-width:1186px) {
+  .candidates-wrapper {
+    margin-top: -100px;
+  }
+}
+
+.team-text {
+  font-size: 1.5em;
+}
+.team-text, p {
+  line-height: 1em;
+}
+
+@media screen and (max-width:999px) {
+  .team-text {
+    font-size: 1.0em;
+  }
+  .desc{
+  font-size: small;
+}
+}
+.form-wrapper {
+  background-color: #fc3468;
+  height: 500px; 
+}
+
+@media screen and (max-width:781px) {
+  .schedule-text {
+    font-size: 1.0em;
+  }
+}
+
+@media screen and  (max-width: 576px) {
+  .index-text{
+    font-size: x-small;
+    font-weight: 450;
+  }
+}
+
+
+/* Image Wrapper Hover Effects */
+.background-img-wrapper,
+.background-img2-wrapper,
+.background-img3-wrapper {
+  transition: all 0.3s ease-in-out;
+}
+
+.background-img-wrapper:hover,
+.background-img2-wrapper:hover,
+.background-img3-wrapper:hover {
+  filter: brightness(0.9);
+  /* Slightly darken the background on hover */
+}
+
+
+/* Card Hover Effects */
+.index-card{
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.index-card:hover {
+  transform: scale(1.05);
+  
+}

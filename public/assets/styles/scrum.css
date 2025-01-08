@@ -1,0 +1,42 @@
+.custom-spacing {
+  padding-left: 300px; 
+}
+.custom-spacing-right {
+  padding-right: 300px; 
+
+}
+
+@media screen and (max-width:1419px) {
+  .custom-spacing {
+    padding-left: 250px;
+  }
+  .custom-spacing-right {
+    padding-right: 250px;
+  }
+}
+
+@media screen and (max-width:1220px) {
+  .custom-spacing {
+    padding-left: 170px;
+  }
+  .custom-spacing-right {
+    padding-right: 170px;
+  }
+}
+
+@media screen and (max-width:1095px) {
+  .custom-spacing {
+    padding-left: 0px;
+  }
+  .custom-spacing-right {
+    padding-right: 0px;
+  }
+}
+
+@media screen and (max-width:770px) {
+
+  .custom-spacing-right {
+    padding-right: 20px;
+  }
+
+}
