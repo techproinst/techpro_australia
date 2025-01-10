@@ -86,7 +86,7 @@
           </ul>
 
           <a class="links" href="register-form.html">Register</a>
-          <a class="links" href="">/Login</a>
+          <a class="links" href="{{ route('page.details') }}">/View Details</a>
       </div>
   </div>
 </nav>

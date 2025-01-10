@@ -107,61 +107,29 @@
         <li class="sidebar-item has-sub">
           <a href="#" class="sidebar-link">
             <i class="bi bi-collection-fill"></i>
-            <span>Extra Components</span>
+            <span>Payments Menu</span>
           </a>
 
           <ul class="submenu">
             <li class="submenu-item">
-              <a href="extra-component-avatar.html" class="submenu-link"
-                >Avatar</a
+              <a href="{{ route('payments.pending') }}" class="submenu-link"
+                >Pending Payments</a
               >
             </li>
 
             <li class="submenu-item">
-              <a href="extra-component-comment.html" class="submenu-link"
-                >Comment</a
+              <a href="{{ route('payments.active') }}" class="submenu-link"
+                >Active payments</a
               >
             </li>
 
             <li class="submenu-item">
-              <a href="extra-component-divider.html" class="submenu-link"
-                >Divider</a
+              <a href="{{ route('declined.payments') }}" class="submenu-link"
+                >Declined Payments</a
               >
             </li>
 
-            <li class="submenu-item">
-              <a
-                href="extra-component-date-picker.html"
-                class="submenu-link"
-                >Date Picker</a
-              >
-            </li>
-
-            <li class="submenu-item">
-              <a href="extra-component-flag.html" class="submenu-link"
-                >Flag</a
-              >
-            </li>
-
-            <li class="submenu-item">
-              <a
-                href="extra-component-sweetalert.html"
-                class="submenu-link"
-                >Sweet Alert</a
-              >
-            </li>
-
-            <li class="submenu-item">
-              <a href="extra-component-toastify.html" class="submenu-link"
-                >Toastify</a
-              >
-            </li>
-
-            <li class="submenu-item">
-              <a href="extra-component-rating.html" class="submenu-link"
-                >Rating</a
-              >
-            </li>
+           
           </ul>
         </li>
 {{--         

@@ -8,7 +8,7 @@
     {{ $slot }}
 
 
-    @include('pages_includes.footer')
+@include('pages_includes.footer')
    
 </body>
 </html>

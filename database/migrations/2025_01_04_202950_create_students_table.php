@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('app_no');
             $table->string('email')->unique();
             $table->string('password');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

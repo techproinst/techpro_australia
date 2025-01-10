@@ -48,6 +48,16 @@ class Payment extends Model
         return 'INV-' . $part1 . '-' . $part2 . '-' . $part3 . '-' . $part4;
         
     }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'id');
+    }
+
+    public function paymentSchedule() {
+
+        return $this->belongsTo(PaymentSchedule::class, 'schedule_id', 'id');
+    }
     
 
 

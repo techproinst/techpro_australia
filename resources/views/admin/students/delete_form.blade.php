@@ -1,5 +1,6 @@
 <form action="{{ route('student.destroy', ['id' => $student->id]) }}" method="POST">
   @csrf
+  @method('DELETE')
 
   <div class="modal fade text-left modal-borderless" id="delete{{ $student->id }}" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel1" aria-hidden="true">

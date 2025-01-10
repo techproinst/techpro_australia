@@ -75,6 +75,7 @@
                   <label for="formFile" class="form-label">Upload Evidence of Payment</label>
                   <input class="form-control" type="file" name="payment_receipt">
                   <input value="{{ $student->id }}" type="text" name="id" id="" hidden>
+                  <input value="{{ $continent }}" name="continent" type="text" hidden>
                   @error('payment_receipt')
                   <span class="text-danger">
                     {{ $message }}

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ApplicationNotification;
+use App\Models\Payment;
+use App\Models\PaymentSchedule;
 use App\Models\Student;
 use App\Services\ApplicationService;
 use Exception;
@@ -72,8 +74,6 @@ class StudentController extends Controller
         ]);
 
         
-        $year = date('Y');
-        $validated['app_no'] = Student::genAppNo($year);
         $validated['password'] = Hash::make($request->input('password'));
         unset($validated['password_confirmation']);
 
@@ -87,7 +87,7 @@ class StudentController extends Controller
 
             try {
 
-                Mail::to($student->email)->send(new ApplicationNotification($student->firstname, $student->lastname, $student->email, $student->course->name, $student->app_no, $student->id));
+              /*  Mail::to($student->email)->send(new ApplicationNotification($student->firstname, $student->lastname, $student->email, $student->course->name, $student->app_no, $student->id)); */
 
 
             } catch(Exception $err) {
@@ -122,6 +122,88 @@ class StudentController extends Controller
             ]);
 
         }
+
+
+
+
+
+    }
+
+
+    public function showDetails(Request $request) 
+    {
+          $student = Student::with('course')->where('app_no', $request->app_no)->first();
+
+          if(!$student) {
+
+            return redirect()->back()->with([
+                'flash_message' => 'Invalid application number',
+                'flash_type' => 'danger'
+
+            ]);
+
+          }
+
+          $payments = Payment::with('paymentSchedule')
+                              ->where('student_id', $student->id)
+                              ->where('status', 'success')
+                              ->get();
+
+         if($payments->isEmpty()) {
+
+            return view('pages.application.details', compact('student'));
+         }
+
+        $scheduleId = $student->course_id;
+
+        $schedule = PaymentSchedule::where('course_id', $scheduleId)->first();
+
+        $amountDue = json_decode($schedule->amount);
+
+        $currency = $payments->first()->currency;
+
+        $amountScheduled =  $currency === 'usd' ? $amountDue->other : $amountDue->africa;
+
+        $paid = $payments->sum('amount');
+
+        $balance = $amountScheduled - $paid;
+
+    
+
+/*
+        $currency = [];
+
+        $amountDue = json_decode($schedule->amount);
+
+        $paid = 0;
+
+        foreach ($payments as $index => $payment) {
+
+            $currency[] = $payment->currency;  
+            $paid += $payment->amount;
+
+        }
+
+        $amountScheduled = $currency[0] === 'usd' ? $amountDue->other : $amountDue->africa;
+
+        $balance = $amountScheduled - $paid;
+
+
+        return $balance;
+*/
+         return view('pages.application.details', compact(
+            'student',
+            'payments',
+            'amountDue',
+            'balance',
+            'currency',
+        ));
+
+
+
+
+
+
 
 
 
@@ -195,8 +277,38 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy( $id)
     {
-        //
+         try{
+
+            $student = Student::find($id);
+             $student->delete();
+
+             return redirect()->back()->with([
+
+                'flash_message' => 'Student record deleted successfully',
+                'flash_type' => 'success',
+
+             ]);
+
+         } catch(Exception $err) {
+
+            Log::error($err->getMessage());
+
+            return redirect()->back()->with([
+
+                'flash_message' => 'Something went wrong while trying to delete student record',
+                'flash_type' => 'danger',
+
+             ]);
+
+
+         }
     }
+
+
+
+
+
+
 }

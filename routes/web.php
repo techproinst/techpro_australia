@@ -57,6 +57,16 @@ Route::get('scrum-master',[CourseController::class, 'getScrumCourse'])->name('sc
 Route::get('product-management',[CourseController::class, 'getProductManagementCourse'])->name('product-management.show');
 
 
+Route::get('/details', function() {
+    return view('pages.application.details-form');
+})->name('page.details');
+
+Route::post('/details-form', [StudentController::class, 'showDetails'])->name('details.post');
+Route::get('/outstanding-fees', [StudentController::class, 'outstanding' ])->name('outstanding.payment');
+
+
+
+
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function() {
 
     Route::get('/dashboard', function () {
@@ -66,6 +76,13 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function() {
     Route::get('/students', [StudentController::class, 'index'])->name('students.view');
     Route::post('/students/{id}',[StudentController::class, 'update'])->name('student.update');
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+    Route::get('/pending/payments', [PaymentController::class, 'getPendingPayments'])->name('payments.pending');
+    Route::post('/approve/payment/{id}', [PaymentController::class, 'approve'])->name('payment.approve');
+    Route::post('/decline/payment', [PaymentController::class, 'decline'])->name('payment.decline');
+
+    Route::get('active/payments', [PaymentController::class, 'getActivePayments'])->name('payments.active');
+    Route::get('declined/payments', [PaymentController::class, 'getDeclinedPayments'])->name('declined.payments');
 
 });
 
