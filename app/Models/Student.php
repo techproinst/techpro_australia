@@ -30,6 +30,14 @@ class Student extends Model
 
     }
 
+    public function StudentReview()
+    {
+      return $this->hasOne(StudentReview::class, 'student_id', 'id');
+    }
+
+
+    
+
 
 
 

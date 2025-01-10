@@ -52,7 +52,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
-                <th scope="col">Transaction Ref</th>
+                <th scope="col">Invoice</th>
                 <th scope="col">Description</th>
                 <th scope="col">Payment Reference</th>
                 <th scope="col">Receipt</th>
@@ -69,7 +69,7 @@
                 <tr>
                   <th scope="row">{{ $index + 1 }}</th>
                   <td>{{ date('d/m/y', strtotime($payment->created_at)) }}</td>
-                  <td>{{ $payment->transaction_reference }}</td>
+                  <td>{{ $payment->invoice }}</td>
                   <td>{{ $payment->description }}</td>
                   <td>{{ $payment->payment_reference }}</td>
                   <td>
@@ -91,7 +91,7 @@
                   <td><strong>{!!$currencySymbol!!}{{number_format($balance) }}</strong></td>
                 </tr>
                 <tr>
-                  <td colspan="9"><strong><a href="{{ route('outstanding.payment', ['id' => $student->id]) }}">proceed to pay balance</a></strong></td>
+                  <td colspan="9"><strong><a href="{{ route('outstanding.payment', ['student' => $student->id]) }}">proceed to pay balance</a></strong></td>
                 </tr>
               @endif
             </tbody>

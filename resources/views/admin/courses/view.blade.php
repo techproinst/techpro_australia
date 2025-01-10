@@ -1,10 +1,10 @@
 <x-admin-layout>
   <x-slot:title>
-   Pending :: payments
+    Courses
   </x-slot:title>
 
   <x-slot:header>
-    Payments :: Menu
+    Courses :: Menu
   </x-slot:header>
 
   <div class="row">
@@ -38,7 +38,7 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">
-          Pending :: payments
+          Registered :: Courses
         </h5>
       </div>
       <div class="card-body">
@@ -46,36 +46,35 @@
           <thead>
             <tr>
               <th>S/N</th>
-              <th>Fullname</th>
-              <th>Invoice</th>
-              <th>Transaction Ref</th>
-              <th>Status</th>
-              <th>Amount Due</th>
-              <th>Payment Receipts</th>
+              <th>Course Name</th>
+              <th>Certification</th>
+              <th>Course  Code</th>
+              <th>Duration</th>
+              <th>Syllabus</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($payments as $index => $payment )
+            @foreach ($courses as  $index => $course )
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ Str::ucfirst(strtolower($payment->student->firstname))}} {{ Str::ucfirst(strtolower($payment->student->lastname))}}</td>
-              <td>{{ $payment->invoice }}</td>
-              <td>{{ $payment->transaction_reference }}</td>
-              <td>{{ $payment->status ?? 'pending' }}</td>
+              <td>{{$course->name}}</td>
+              <td>{{$course->certification === 1 ? 'Yes' : 'No'}}</td>
+              <td>{{ $course->course_code }}</td>
+              <td>{{ $course->duration}}</td>
               @php
-                $currencySymbol = $payment->currency === 'usd' ? '$' : '&#8358';
+                $syllabuses = json_decode($course->syllabus)
               @endphp
-              <td>{!!$currencySymbol!!}{{number_format($payment->amount_due)}}</td>
-              <td> <a href="{{ asset(
-              'upload/'.$payment->payment_receipt) }}" target="_blank"><img  height="60px" src="{{ asset('upload/'.$payment->payment_receipt)  }}" alt="payment receipts"></a> </td>
+              <td> @foreach ($syllabuses as $syllabus )
+
+                {{ $syllabus }} <br>
+                
+              @endforeach</td>
               <td>
-                 @include('admin.payments.approve_form')
-                 @include('admin.payments.decline_form')
+                {{-- @include('admin.students.edit_form')
+                @include('admin.students.delete_form') --}}
                 <span class="badge bg-success" data-bs-toggle="modal"
-                  data-bs-target="#approve-form{{ $payment->id }}">Approve</span>
-                <span class="badge bg-danger" data-bs-toggle="modal"
-                data-bs-target="#decline-form{{ $payment->id }}" >Decline</span>
+                  data-bs-target="#border-less">Edit</span>
               </td>
             </tr>
             @endforeach

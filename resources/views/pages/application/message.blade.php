@@ -31,9 +31,21 @@
           <p>Hi {{ ucfirst(strtolower($student->firstname))}} {{ $student->lastname }} you have registered succesfully</p>
           <p>Your application details have been sent to your email</p>
 
-          <a href="{{ route('payment', ['id' => $student->id]) }}">
-            <button style="background-color:  #fc3468; color:white" type="button" class="btn">proceed to make payments</button>
-          </a>
+            @if ($student->course->id === 4 || $student->course->id === 6)
+
+            <a href="{{ url('/')}}">
+              <button style="background-color:  #fc3468; color:white" type="button" class="btn">Home</button>
+            </a>
+
+            @else
+
+            <a href="{{ route('payment', ['id' => $student->id]) }}">
+              <button style="background-color:  #fc3468; color:white" type="button" class="btn">proceed to make payments</button>
+            </a>
+              
+            @endif
+
+          
         </div>
     </div>
   </div>

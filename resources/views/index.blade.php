@@ -3,6 +3,12 @@
    <link rel="stylesheet" href="{{ asset('assets/styles/index.css') }}" /> 
   </x-slot:styles>
 
+  <style>
+    .star {
+        width: 5%;
+    }
+  </style>
+
   <x-slot:title>
     TechPro :: Au
   </x-slot:title>
@@ -440,10 +446,54 @@
         </div>
     </div>
 
-    <div class="slide-container swiper">
+    <div class="slide-container swiper mb-5">
         <div class="slide-content">
             <div class="card-wrapper swiper-wrapper">
+
+                @foreach ($reviews as $review )
+
                 <div class="card swiper-slide">
+                    <div class="image-content">
+                        <span class="overlay"></span>
+                        <div class="card-image">
+                            <img
+                                src="{{ asset('upload/'. $review->image) }}"
+                                alt=""
+                                class="card-img"
+                            />
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="name">{{Str::ucfirst(Str::lower($review->student->firstname))  }} {{Str::ucfirst(Str::lower($review->student->lastname))  }}</h2>
+                        <h6 class="card-text-margin">{{ $review->country }}</h6>
+                        <div class="text-center card-text-margin">
+
+                            @php
+                                $rating = $review->ratings;
+                            @endphp
+
+                            @for($i = 0; $i < $rating; $i++)
+
+                            <img
+                            width="10%"
+                            src="{{ asset('assets/images/Star 1.png') }}"
+                            alt=""
+                            />
+                                
+                            @endfor
+                           
+                            
+                        </div>
+                        <p class="description">
+                            {{ $review->comments }}
+                           
+                        </p>
+                    </div>
+                </div>
+                    
+                @endforeach
+                
+                {{-- <div class="card swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -910,7 +960,7 @@
                             their seven-week training program
                         </p>
                     </div>
-                </div>
+                </div>  --}}
             </div>
         </div>
         <div class="swiper-button-next swiper-navBtn"></div>
@@ -918,7 +968,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="row mt-5 text-center">
+    <div class="row mt-5 mb-5 text-center">
         <div class="col">
             <h1 class="techpr">850+</h1>
             <h6>Number of candidates</h6>
@@ -932,7 +982,7 @@
             <h6>Proffessional team members</h6>
         </div>
     </div>
-    <div class="row mt-5 text-center">
+    {{-- <div class="row mt-5 text-center">
         <div class="col">
             <h1>Meet The <span class="techpr">Team</span></h1>
         </div>
@@ -968,7 +1018,7 @@
             <h3 class="pt-4 team-text">Dr Olukpmaiya</h3>
             <p class="desc">Senior Reporting Officer/Mentor</p>
         </div>
-    </div>
+    </div> --}}
 
     <div class="row mt-5 text-center">
         <div class="col">

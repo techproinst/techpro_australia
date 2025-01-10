@@ -45,6 +45,7 @@
         <table class="table table-striped" id="table1">
           <thead>
             <tr>
+              <th>S/N</th>
               <th>Firstname</th>
               <th>Lastname</th>
               <th>Email</th>
@@ -54,8 +55,9 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($students as $student )
+            @foreach ($students as $index => $student )
             <tr>
+              <td>{{ $index + 1 }}</td>
               <td>{{ Str::ucfirst(strtolower($student->firstname))}}</td>
               <td>{{ Str::ucfirst(strtolower($student->lastname))}}</td>
               <td>{{ $student->email }}</td>

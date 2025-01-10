@@ -1,10 +1,10 @@
 <x-admin-layout>
   <x-slot:title>
-   Pending :: payments
+    Students
   </x-slot:title>
 
   <x-slot:header>
-    Payments :: Menu
+    Student :: Menu
   </x-slot:header>
 
   <div class="row">
@@ -38,7 +38,7 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">
-          Pending :: payments
+          Registered :: For Free Course
         </h5>
       </div>
       <div class="card-body">
@@ -46,36 +46,29 @@
           <thead>
             <tr>
               <th>S/N</th>
-              <th>Fullname</th>
-              <th>Invoice</th>
-              <th>Transaction Ref</th>
-              <th>Status</th>
-              <th>Amount Due</th>
-              <th>Payment Receipts</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Course</th>
+              <th>App No</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($payments as $index => $payment )
+            @foreach ($students as $index => $student )
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ Str::ucfirst(strtolower($payment->student->firstname))}} {{ Str::ucfirst(strtolower($payment->student->lastname))}}</td>
-              <td>{{ $payment->invoice }}</td>
-              <td>{{ $payment->transaction_reference }}</td>
-              <td>{{ $payment->status ?? 'pending' }}</td>
-              @php
-                $currencySymbol = $payment->currency === 'usd' ? '$' : '&#8358';
-              @endphp
-              <td>{!!$currencySymbol!!}{{number_format($payment->amount_due)}}</td>
-              <td> <a href="{{ asset(
-              'upload/'.$payment->payment_receipt) }}" target="_blank"><img  height="60px" src="{{ asset('upload/'.$payment->payment_receipt)  }}" alt="payment receipts"></a> </td>
+              <td>{{ Str::ucfirst(strtolower($student->firstname))}}</td>
+              <td>{{ Str::ucfirst(strtolower($student->lastname))}}</td>
+              <td>{{ $student->email }}</td>
+              <td>{{ $student->course->name }}</td>
+              <td>{{ $student->app_no }}</td>
               <td>
-                 @include('admin.payments.approve_form')
-                 @include('admin.payments.decline_form')
+                  @include('admin.students.application_no_form') 
+            
                 <span class="badge bg-success" data-bs-toggle="modal"
-                  data-bs-target="#approve-form{{ $payment->id }}">Approve</span>
-                <span class="badge bg-danger" data-bs-toggle="modal"
-                data-bs-target="#decline-form{{ $payment->id }}" >Decline</span>
+                  data-bs-target="#app-no-form{{ $student->id }}">Generate Application Number</span>
+               
               </td>
             </tr>
             @endforeach

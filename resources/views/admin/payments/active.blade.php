@@ -19,6 +19,7 @@
         <table class="table table-striped" id="table1">
           <thead>
             <tr>
+              <th>S/N</th>
               <th>Fullname</th>
               <th>Invoice</th>
               <th>Transaction Ref</th>
@@ -29,8 +30,9 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($payments as $payment )
+            @foreach ($payments as  $index => $payment )
             <tr>
+              <td>{{ $index + 1 }}</td>
               <td>{{ Str::ucfirst(strtolower($payment->student->firstname))}} {{ Str::ucfirst(strtolower($payment->student->lastname))}}</td>
               <td>{{ $payment->invoice }}</td>
               <td>{{ $payment->transaction_reference }}</td>

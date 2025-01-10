@@ -101,27 +101,33 @@ class PaymentController extends Controller
      */
     public function store(Request $request, ApplicationService  $applicationService)
     {
+
         $validated = $request->validate([
-            'id' => ['required','exists:students,id'],
+            'student_id' => ['required','exists:students,id'],
             'payment_receipt' => 'required|mimes:jpg,jpeg,png,gif,pdf|max:1024',
 
         ]);
+
+       
 
 
             
         try { 
 
 
-            $student = $applicationService->getStudent($request->id);
+            $student = $applicationService->getStudent($request->student_id);
 
             $paymentSchedule = $applicationService->getPaymentSchedule($student->course_id);
 
             list($amountDue) = $this->getScheduleAmount($paymentSchedule->amount);
-             
-            $validated['student_id'] = $student->id; 
+
+            $existingPayment = Payment::where('student_id', $request->student_id)->first();
+
+        
+            $validated['student_id'] = $request->student_id; 
             $validated['amount_due'] = $amountDue;
             $validated['transaction_reference'] = Payment::trxRef();
-            $validated['invoice'] = Payment::inv();
+            $validated['invoice'] = $existingPayment ? $existingPayment->invoice : Payment::inv();
             $validated['purpose'] = $paymentSchedule->purpose;
             $validated['description'] = $paymentSchedule->description;
             $validated['schedule_id'] = $paymentSchedule->id;
@@ -209,11 +215,16 @@ class PaymentController extends Controller
                 $student = $payment->student;
                 $course = $student->course;
 
-                 $year = date('Y');
-                 $student->app_no = Student::genAppNo($year);
+                if(!$student->app_no) {
 
-                 $student->save();
+                    $year = date('Y');
+                    $student->app_no =  Student::genAppNo($year);
+   
+                    $student->save();
 
+                }
+
+            
                  $payment->update([
                     'amount' => $request->amount,
                     'payment_reference' => $request->payment_reference,

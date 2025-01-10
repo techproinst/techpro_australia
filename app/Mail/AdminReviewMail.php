@@ -10,31 +10,20 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-class ApplicationNotification extends Mailable
+class AdminReviewMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-     public $firstname;
-     public $lastname;
-     public $email;
-     public $course;
-     public $id;
-     public $courseId;
-     
 
-    public function __construct($firstname, $lastname, $email, $course,  $id, $courseId)
+     public $adminName;
+
+
+    public function __construct($adminName)
     {
-       $this->firstname = $firstname;
-       $this->lastname = $lastname;
-       $this->email = $email;
-       $this->course = $course;
-       $this->id = $id;
-       $this->courseId = $courseId;
-    
-          
+        $this->adminName = $adminName;
     }
 
     /**
@@ -44,7 +33,7 @@ class ApplicationNotification extends Mailable
     {
         return new Envelope(
             from:new Address(env('MAIL_FROM_ADDRESS')),
-             subject: 'Application :: Notification',
+            subject: 'Review :: Notification',
         );
     }
 
@@ -54,15 +43,11 @@ class ApplicationNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mails.application',
+            view: 'mails.review',
             with: [
-                'firstname' => $this->firstname,
-                'lastname' => $this->lastname,
-                'email' => $this->email,
-                'course' => $this->course,
-                'id' => $this->id,
-                'courseId' => $this->courseId,
+                'adminName' => $this->adminName,
             ]
+
         );
     }
 

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('student_reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_id')->default(0);
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('app_no')->nullable();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->softDeletes();
+            $table->foreignId('student_id')->constrained()->cascadeOnDelete();
+            $table->string('country');
+            $table->string('status')->default(0);
+            $table->integer('ratings');
+            $table->longText('comments');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('student_reviews');
     }
 };

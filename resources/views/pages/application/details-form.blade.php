@@ -9,7 +9,7 @@
   </style>
 
 
-  <div class="container mt-5">
+  <div  class="container mt-5">
     
     <div class="row">
       <div class="form-wrapper ">
@@ -24,7 +24,7 @@
     </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 ">
+      <div class="col-lg-6">
         <div class="">
           <form action="{{ route('details.post') }}" method="POST">
             @csrf
@@ -37,7 +37,7 @@
   
               @enderror
             </span>
-            <button  type="submit" class="register-btn mt-3">Submit</button>
+            <button style="margin-bottom: 410px"  type="submit" class="register-btn mt-3">Submit</button>
           </form>
         </div>
 

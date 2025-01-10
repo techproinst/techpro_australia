@@ -1,10 +1,10 @@
 <x-admin-layout>
   <x-slot:title>
-   Pending :: payments
+    Reviews
   </x-slot:title>
 
   <x-slot:header>
-    Payments :: Menu
+    Review :: Menu
   </x-slot:header>
 
   <div class="row">
@@ -38,7 +38,7 @@
     <div class="card">
       <div class="card-header">
         <h5 class="card-title">
-          Pending :: payments
+          Pending :: Reviews
         </h5>
       </div>
       <div class="card-body">
@@ -47,35 +47,33 @@
             <tr>
               <th>S/N</th>
               <th>Fullname</th>
-              <th>Invoice</th>
-              <th>Transaction Ref</th>
+              <th>Email</th>
+              <th>Ratings</th>
               <th>Status</th>
-              <th>Amount Due</th>
-              <th>Payment Receipts</th>
+              <th>comments</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($payments as $index => $payment )
+            @foreach ($reviews as $index => $review )
             <tr>
               <td>{{ $index + 1 }}</td>
-              <td>{{ Str::ucfirst(strtolower($payment->student->firstname))}} {{ Str::ucfirst(strtolower($payment->student->lastname))}}</td>
-              <td>{{ $payment->invoice }}</td>
-              <td>{{ $payment->transaction_reference }}</td>
-              <td>{{ $payment->status ?? 'pending' }}</td>
-              @php
-                $currencySymbol = $payment->currency === 'usd' ? '$' : '&#8358';
-              @endphp
-              <td>{!!$currencySymbol!!}{{number_format($payment->amount_due)}}</td>
+              <td>{{ Str::ucfirst(strtolower($review->student->firstname))}} {{ Str::ucfirst(strtolower($review->student->lastname))}}</td>
+              <td>{{ $review->student->email }}</td>
+              <td>{{ $review->ratings }}</td>
+              <td>{{ $review->status ===  0 ? 'pending' : ''}}</td>
+              <td>{{ $review->comments}}</td>
               <td> <a href="{{ asset(
-              'upload/'.$payment->payment_receipt) }}" target="_blank"><img  height="60px" src="{{ asset('upload/'.$payment->payment_receipt)  }}" alt="payment receipts"></a> </td>
+              'upload/'.$review->image) }}" target="_blank"><img  height="60px" src="{{ asset('upload/'.$review->image)  }}" alt="image"></a></td>
               <td>
-                 @include('admin.payments.approve_form')
-                 @include('admin.payments.decline_form')
+                @include('admin.reviews.approve_form')
+                @include('admin.reviews.decline_form')
+        
                 <span class="badge bg-success" data-bs-toggle="modal"
-                  data-bs-target="#approve-form{{ $payment->id }}">Approve</span>
+                  data-bs-target="#approve-form{{ $review->id }}">Approve</span>
                 <span class="badge bg-danger" data-bs-toggle="modal"
-                data-bs-target="#decline-form{{ $payment->id }}" >Decline</span>
+                data-bs-target="#decline-form{{ $review->id }}" >Decline</span>
               </td>
             </tr>
             @endforeach

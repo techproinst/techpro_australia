@@ -3,7 +3,9 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserContoller;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
-  /*
+  
     $ch=curl_init();
     $url='Https://ipapi.co/json';
     curl_setopt($ch,CURLOPT_URL,$url);
@@ -33,9 +36,15 @@ Route::get('/', function () {
        
     }
     curl_close($ch);
-    */  
-    return view('index');
+    
+    return view('index'); 
+
 })->name('index');
+
+*/
+
+Route::get('/', [ReviewController::class, 'index'])->name('index');
+
 
 Route::get('/quiz', function () {
     return view('pages.quiz');
@@ -61,21 +70,29 @@ Route::get('/details', function() {
     return view('pages.application.details-form');
 })->name('page.details');
 
+Route::get('/feedback/form', function() {
+    return view('pages.feedback-form');
+});
+
+Route::post('feedback', [StudentController::class, 'submitFeedbackForm'])->name('submit.feedback');
+
+
 Route::post('/details-form', [StudentController::class, 'showDetails'])->name('details.post');
-Route::get('/outstanding-fees', [StudentController::class, 'outstanding' ])->name('outstanding.payment');
+Route::get('/outstanding-fees/{student}', [StudentController::class, 'outstanding' ])->name('outstanding.payment');
+
 
 
 
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function() {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [UserContoller::class, 'index'])->name('dashboard');
 
     Route::get('/students', [StudentController::class, 'index'])->name('students.view');
     Route::post('/students/{id}',[StudentController::class, 'update'])->name('student.update');
     Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
+    Route::get('/students/free-courses',[StudentController::class, 'show'])->name('students.free.courses');
+    Route::post('/student/application-no/{student}', [StudentController::class, 'genAppNo'])->name('students.gen.application_no');
 
     Route::get('/pending/payments', [PaymentController::class, 'getPendingPayments'])->name('payments.pending');
     Route::post('/approve/payment/{id}', [PaymentController::class, 'approve'])->name('payment.approve');
@@ -83,6 +100,15 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function() {
 
     Route::get('active/payments', [PaymentController::class, 'getActivePayments'])->name('payments.active');
     Route::get('declined/payments', [PaymentController::class, 'getDeclinedPayments'])->name('declined.payments');
+
+    Route::get('pending/reviews', [ReviewController::class, 'getPendingReviews'])->name('pending.reviews');
+    Route::get('active/reviews', [ReviewController::class, 'getActiveReviews'])->name('active.reviews');
+    Route::get('declined/reviews', [ReviewController::class, 'getDeclinedReviews'])->name('declined.reviews');
+
+    Route::post('approve/reviews/{studentReview}', [ReviewController::class, 'approveReview'])->name('approve.reviews');
+    Route::post('decline/reviews/{studentReview}', [ReviewController::class, 'declineReview'])->name('decline.reviews');
+
+    Route::get('/courses', [CourseController::class, 'index'])->name('show.courses');
 
 });
 

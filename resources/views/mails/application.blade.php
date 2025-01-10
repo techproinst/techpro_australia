@@ -22,12 +22,21 @@
                 <h6>Name: {{ ucfirst(strtolower($firstname)) }} {{ ucfirst(strtolower($lastname)) }}</h6>
                 <h6>Email Address: {{ $email }}</h6>
                 <h6>Course applied: {{ $course }}</h6>
-                <h6>Application Number: {{ $app_no }}</h6>
+                
       
-                <a href="{{ route('payment', ['id' => $id]) }}">
-        
-                    <button style="background-color: #fc3468;;" type="button" class="btn">Proceed to make payments</button>
-                </a>
+            @if ($courseId === 4 || $courseId === 6)
+
+            <a href="{{ url('/')}}">
+              <button style="background-color:  #fc3468; color:white" type="button" class="btn">Home</button>
+            </a>
+
+            @else
+
+            <a href="{{ route('payment', ['id' => $id]) }}">
+              <button style="background-color:  #fc3468; color:white" type="button" class="btn">proceed to make payments</button>
+            </a>
+              
+            @endif
         
         </div>
     </div>

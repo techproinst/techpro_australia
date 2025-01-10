@@ -16,9 +16,9 @@
                 </div>
                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                   <h6 class="text-muted font-semibold">
-                    Profile Views
+                    Total Students
                   </h6>
-                  <h6 class="font-extrabold mb-0">112.000</h6>
+                  <h6 class="font-extrabold mb-0">{{ $students }}</h6>
                 </div>
               </div>
             </div>
@@ -36,8 +36,8 @@
                   </div>
                 </div>
                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                  <h6 class="text-muted font-semibold">Followers</h6>
-                  <h6 class="font-extrabold mb-0">183.000</h6>
+                  <h6 class="text-muted font-semibold">Total Payments</h6>
+                  <h6 class="font-extrabold mb-0">{{ $payments }}</h6>
                 </div>
               </div>
             </div>
@@ -55,8 +55,8 @@
                   </div>
                 </div>
                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                  <h6 class="text-muted font-semibold">Following</h6>
-                  <h6 class="font-extrabold mb-0">80.000</h6>
+                  <h6 class="text-muted font-semibold">Total Reviews</h6>
+                  <h6 class="font-extrabold mb-0">{{ $reviews }}</h6>
                 </div>
               </div>
             </div>
@@ -74,8 +74,8 @@
                   </div>
                 </div>
                 <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                  <h6 class="text-muted font-semibold">Saved Post</h6>
-                  <h6 class="font-extrabold mb-0">112</h6>
+                  <h6 class="text-muted font-semibold">Total Courses</h6>
+                  <h6 class="font-extrabold mb-0">{{ $courses }}</h6>
                 </div>
               </div>
             </div>
@@ -288,15 +288,15 @@
         </div>
       </div> --}}
     </div>
-    <div class="col-12 col-lg-3">
+    <div  class="col-12 col-lg-3">
       <div class="card">
         <div class="card-body py-4 px-4">
           <div class="d-flex align-items-center">
             <div class="avatar avatar-xl">
-              <img src="./assets/compiled/jpg/1.jpg" alt="Face 1" />
+              <img src="{{ asset('assets/compiled/jpg/1.jpg') }}" alt="Face 1" />
             </div>
             <div class="ms-3 name">
-              <h5 class="font-bold">{{Str::upper(Auth::user()->email)}}</h5>
+              <h5 class="font-bold">{{Str::ucfirst(Str::lower(Auth::user()->email))}}</h5>
               <h6 class="text-muted mb-0">{{ Auth::user()->name ?? "Admin" }}</h6>
             </div>
           </div>
@@ -355,7 +355,7 @@
     </div>
   </x-slot:cards>
 
-  <div class="row">
+  <div style="margin-bottom: 430px" class="row">
     <div class="col-lg-7">
         <div class="card">
             <div class="card-content">
