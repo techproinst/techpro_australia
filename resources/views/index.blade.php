@@ -493,7 +493,7 @@
                     
                 @endforeach
                 
-                {{-- <div class="card swiper-slide">
+                {{--<div class="card swiper-slide">
                     <div class="image-content">
                         <span class="overlay"></span>
                         <div class="card-image">
@@ -515,7 +515,7 @@
                             />
                             <img
                                 width="5%"
-                                src="{{ asset('assets/images/Star 1.png"') }}
+                                src="{{ asset('assets/images/Star 1.png) }}"
                                 alt=""
                             />
                             <img
@@ -960,7 +960,7 @@
                             their seven-week training program
                         </p>
                     </div>
-                </div>  --}}
+                </div> --}}
             </div>
         </div>
         <div class="swiper-button-next swiper-navBtn"></div>
@@ -968,20 +968,21 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="row mt-5 mb-5 text-center">
-        <div class="col">
-            <h1 class="techpr">850+</h1>
-            <h6>Number of candidates</h6>
-        </div>
-        <div class="col">
-            <h1 class="techpr">4.8/5</h1>
-            <h6>Customer satisfaction Rate</h6>
-        </div>
-        <div class="col">
-            <h1 class="techpr">20</h1>
-            <h6>Proffessional team members</h6>
-        </div>
+<div class="row mt-5 mb-5 text-center">
+    <div class="col">
+        <h1 class="techpr techpr-text" data-target="850">850</h1>
+        <h6>Number of candidates</h6>
     </div>
+    <div class="col">
+        <h1 class="techpr techpr-text" data-target="4.8">4.8</h1>
+        <h6>Customer satisfaction Rate</h6>
+    </div>
+    <div class="col">
+        <h1 class="techpr techpr-text" data-target="78">78</h1>
+        <h6>Professional team members</h6>
+    </div>
+</div>
+
     {{-- <div class="row mt-5 text-center">
         <div class="col">
             <h1>Meet The <span class="techpr">Team</span></h1>
@@ -1035,6 +1036,7 @@
         </div>
     </div>
 </div>
+
 
 <section class="form-wrapper mt-5">
     <div class="container">
@@ -1104,5 +1106,45 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{{ asset('assets/scripts/index.js') }}"></script>
+<script>
+    // Function to count numbers
+    function countUp(element, target) {
+        let current = 0;
+        let interval = setInterval(() => {
+            current += Math.ceil(target / 100);
+            element.textContent = current;
+
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(interval);
+            }
+        }, 20);
+    }
+
+    // Intersection Observer to detect when the element is in view
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.techpr-text');
+        const options = {
+            root: null,
+            threshold: 1.0
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const target = parseFloat(element.getAttribute('data-target'));  // Ensure it’s a number
+                    countUp(element, target);
+                    observer.unobserve(element);
+                }
+            });
+        }, options);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    });
+</script>
+
 
 </x-pages-layout>

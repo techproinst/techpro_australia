@@ -20,6 +20,7 @@
                   <li><a href="">FAQS</a></li>
                   <li><a href="">Blog</a></li>
                   <li><a href="">Project</a></li>
+                  <li><a href="{{route('feedback.form')}}">Review</a></li>
               </ul>
           </div>
           <div class="col">

@@ -72,7 +72,7 @@ Route::get('/details', function() {
 
 Route::get('/feedback/form', function() {
     return view('pages.feedback-form');
-});
+})->name('feedback.form');
 
 Route::post('feedback', [StudentController::class, 'submitFeedbackForm'])->name('submit.feedback');
 
